@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npx nodemon --watch './src/**/*.ts' --exec npx ts-node ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +18,13 @@
   },
   "homepage": "https://github.com/xXMauricioHXx/medimais#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "convert-csv-to-json": "0.0.15",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
+    "@types/csvtojson": "^1.1.5",
     "@types/express": "^4.17.2",
     "@types/node": "^13.7.7"
   }
