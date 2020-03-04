@@ -1,29 +1,13 @@
-import express, { Request, Response, NextFunction } from 'express';
-import path from 'path';
-const csvToJson = require('convert-csv-to-json');
+import { Application } from "./application"
+import dotenv from 'dotenv';
 
-export interface Medicine {
-    SUBSTANCIA: string;
-    CNPJ: string;
-}
+dotenv.config();
 
-const app = express();
+setImmediate(async () => {
+    const application = new Application({
+        port: process.env.HTTP_PORT ? parseInt(process.env.HTTP_PORT, 10) : 3000
+    });
 
-app.listen(3000, () => console.log(`Server running on http://localhost:3000`));
-
-app.get('/medicines', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const {min = 0, max = 10} = req.query;
-        const results = await csvToJson.getJsonFromCsv(path.join(__dirname, '/csv/data.csv'));
-        console.log(results[0]);
-        const reducedResults = results
-            .map((result: any) => result['SUBSTANCIA'])
-            .reduce((acc: any, current:any, index: any) => 
-                (index >= min && index <=max) ? acc.concat(current) : acc, []);
-
-        res.send(reducedResults);
-        return next();
-    } catch(err) {
-        return next(err);
-    }
+    console.log('Starting application');
+    await application.start();
 })

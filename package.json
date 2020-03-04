@@ -18,14 +18,17 @@
   },
   "homepage": "https://github.com/xXMauricioHXx/medimais#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "convert-csv-to-json": "0.0.15",
     "csvtojson": "^2.0.10",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@types/csvtojson": "^1.1.5",
     "@types/express": "^4.17.2",
+    "@types/hapi__joi": "^16.0.12",
     "@types/node": "^13.7.7"
   }
 }
