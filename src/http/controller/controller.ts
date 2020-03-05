@@ -1,5 +1,5 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 export interface Controller {
-    loadRoutes(router: Router): void
+  loadRoutes(router: Router): void;
 }
